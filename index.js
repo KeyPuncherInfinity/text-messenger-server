@@ -4,9 +4,13 @@ var socket = require('socket.io')(http, {
     cors: { origin: "*" }
 });
 
-socket.on('connection', (conn) => {
-    console.log('Connected: ' + conn.id);
-})
+
+var sock = require('./lib/socket/try');
+var db = require('./lib/psql/connection');
+
+
+sock.setupSocket(socket);
+
 
 http.listen(3000, () => {
     console.log('Listening')
