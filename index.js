@@ -4,14 +4,21 @@ var socket = require('socket.io')(http, {
     cors: { origin: "*" }
 });
 
-
 var sock = require('./lib/socket/try');
-var db = require('./lib/psql/connection');
+var conn = require('./lib/psql/connection');
+var app = require('./lib/app');
 
 
-sock.setupSocket(socket);
+run();
 
+async function run() {
 
-http.listen(3000, () => {
-    console.log('Listening')
-})
+    sock.setupSocket(socket);
+    app.setupApp(express);
+
+    
+    http.listen(80, () => {
+        console.log('Listening')
+    })
+}
+
