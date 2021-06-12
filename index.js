@@ -4,7 +4,7 @@ var socket = require('socket.io')(http, {
     cors: { origin: "*" }
 });
 
-var sock = require('./lib/socket/try');
+var sock = require('./lib/socket/socketsetup');
 var conn = require('./lib/psql/connection');
 var app = require('./lib/app');
 
