@@ -15,3 +15,12 @@ CREATE TABLE tm_users_loggedin(
     uid VARCHAR(30) UNIQUE, 
     FOREIGN KEY(uid) REFERENCES tm_users_auth_cred(uid)
 );
+
+CREATE TABLE tm_users_relation_status(
+    id VARCHAR(30) PRIMARY KEY, 
+    l_uid VARCHAR(30), 
+    r_uid VARCHAR(30), 
+    FOREIGN KEY(l_uid) REFERENCES tm_users_auth_cred(uid), 
+    FOREIGN KEY(r_uid) REFERENCES tm_users_auth_cred(uid),
+    status VARCHAR(10)
+);

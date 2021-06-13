@@ -3,6 +3,7 @@ var http = require('http').createServer(express);
 var socket = require('socket.io')(http, {
     cors: { origin: "*" }
 });
+require('dotenv').config();
 
 var sock = require('./lib/socket/socketsetup');
 var conn = require('./lib/psql/connection');
@@ -17,8 +18,8 @@ async function run() {
     app.setupApp(express);
 
     
-    http.listen(80, () => {
-        console.log('Listening')
+    http.listen(process.env.PORT, () => {
+        console.log(process.env.PORT);
     })
 }
 
